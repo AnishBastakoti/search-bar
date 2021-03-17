@@ -1,0 +1,173 @@
+:root {
+    --primary-color: #3A16D5;
+    --height: 60px;
+}
+
+.search {
+    background: #a49cbb;
+    width: auto;
+    height: var(--height);
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    transform: translate(-34%, 520%);
+    left: 50%;
+    top: 50%;
+    position: absolute;
+}
+
+.search input[type="text"] {
+    position: relative;
+    width: var(--height);
+    height: var(--height);
+    font: 400 16px 'Varela Round', sans-serif;
+    color: #414856;
+    border: 0;
+    box-sizing: border-box;
+    outline: none;
+    padding: 0 0 0 40px;
+    transition: width .6s ease;
+    z-index: 10;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.search input[type="text"]:focus {
+    z-index: 0;
+    opacity: 1;
+    width: 190px;
+}
+
+.search input[type="text"]:focus~.symbol::before {
+    width: 0%;
+}
+
+.search input[type="text"]:focus~.symbol:after {
+    clip-path: inset(0% 0% 0% 100%);
+    transition: -webkit-clip-path .04s linear .105s;
+    transition: clip-path .04s linear .105s;
+    transition: clip-path .04s linear .105s, -webkit-clip-path .04s linear .105s;
+}
+
+.search input[type="text"]:focus~.symbol .cloud {
+    top: -30px;
+    left: -30px;
+    transform: translate(0, 0);
+    transition: all .6s ease;
+}
+
+.search input[type="text"]:focus~.symbol .lens {
+    top: 20px;
+    left: 15px;
+    transform: translate(0, 0);
+    fill: var(--primary-color);
+    transition: top .5s ease .1s, left .5s ease .1s, fill .3s ease;
+}
+
+.search .symbol {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    display: -webkit-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search .symbol:before {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-color);
+    z-index: -1;
+    transition: width .6s ease;
+}
+
+.search .symbol:after {
+    content: "";
+    position: absolute;
+    top: 21px;
+    left: 21px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    z-index: 1;
+    clip-path: inset(0% 0% 0% 0%);
+    transition: clip-path .04s linear .225s;
+
+}
+
+.search .symbol .cloud,
+.search .symbol .lens {
+    position: absolute;
+    fill: #fff;
+    stroke: none;
+    top: 50%;
+    left: 50%;
+}
+
+.search .symbol .cloud {
+    width: 35px;
+    height: 32px;
+    transform: translate(-50%, -60%);
+    transition: all .6s ease;
+}
+
+.search .symbol .lens {
+    fill: #fff;
+    width: 16px;
+    height: 16px;
+    z-index: 2;
+    top: 24px;
+    left: 24px;
+    transition: top .3s ease, left .3s ease, fill .2s ease .2s;
+}
+
+body {
+    background: #888c97;
+    height: 100%;
+    font: 400 16px 'Varela Round', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: var(--primary-color);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin: -292px -46px;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+  .tooltip .tooltiptext :visited{
+    content: " ";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: 50px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+  }
